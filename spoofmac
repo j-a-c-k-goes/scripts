@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# bash scripts poofs a (m)edia (a)ccess (c)ontrol address.
+# usage: sudo spoofmac <interface-name>
+
+# replacement addresses
+mac_intel="FC:F8:AE:00:00:00"
+mac_samsung="FC:C7:34:FF:FF:FF"
+
+# display current mac address
+device=$1
+current_mac_addr=$(ifconfig $device | grep ether | awk '{print $2}')
+printf '[%s]  %s' $device $current_mac_addr
+printf "\n"
+
+# display spoofed mac address
+printf '\nchoose a spoof address\n'
+printf '[samsung] %s\n' $mac_samsung
+printf '[intel]   %s\n' $mac_intel
+read -p '[choice] ' selection
+
+# choice your spoof address
+printf 'selected %s\n' $selection
+choice_intel="intel"
+choice_samsung="samsung"
+if [[ $selection == $choice_intel ]]
+    then
+        printf '\n[spoof]\t%s\n' $mac_intel
+        # sudo ifconfig $device ether $mac_intel sudo ifconfig $device down 
+        # sudo ifconfig $device up sleep 1.50 
+        # echo "[new address]: $(ifconfig $device | grep ether | awk '{print $2}')" 
+        # echo "done."
+
+elif [[ $selection == $choice_samsung ]]
+    then
+        printf '\n[spoof]\t%s\n' $mac_samsung
+        # sudo ifconfig $device ether $mac_samsung sudo ifconfig $device down 
+        # sudo ifconfig $device up sleep 1.50 
+        # echo "[new address]: $(ifconfig $device | grep ether | awk '{print $2}')" 
+        # echo "done."
+else
+    echo "invalid selection"
+    exit 1
+fi

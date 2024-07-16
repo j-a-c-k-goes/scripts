@@ -1,0 +1,17 @@
+#!/bin/bash
+#: title        : getheader
+#: date         : 2024 mar 02
+#: author       : jack l.
+#: version      : 1.0
+#: description  : gets the header of a website
+#: options      : $1 <site-url>
+# -------------------------------------------
+SITE_URL=$1
+if [ $# -eq 0 ]
+	then
+		echo "cannot curl nothing."
+		exit 1
+else
+	cURL --head $SITE_URL
+	exit 0
+fi

@@ -1,0 +1,41 @@
+#!/bin/bash
+#: title        : newiste
+#: date         : 2024 mar 02
+#: author       : jack l.
+#: version      : 1.0
+#: description  : scaffolds web app project
+#: options      : $1 <site-proeject-name>
+# -------------------------------------------
+DEV_FOLDER="$HOME/_dev"
+PROJECT_NAME=$1
+MESSAGE="Creating a new project, $PROJECT_NAME @ $DEV_FOLDER"
+if [ $# -eq 0 ]
+	then
+		echo "Please supply a project name."
+		exit 1
+else
+	echo $MESSAGE
+	cd $DEV_FOLDER
+	mkdir $PROJECT_NAME
+	cd $PROJECT_NAME
+	touch .env
+	touch index.php
+	mkdir js && touch js/index.js
+	mkdir config && touch config/config.php
+	mkdir pages
+	mkdir includes
+	mkdir controllers
+	mkdir models
+	mkdir css css/fonts && touch css/main.css
+	mkdir public
+	mkdir public/assets
+	mkdir public/media
+	mkdir public/media/audio
+	mkdir public/media/images
+	mkdir public/media/video
+	mkdir public/media/docs
+	mkdir templates
+	echo "done."
+	tree
+	exit 0
+fi
