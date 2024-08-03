@@ -1,0 +1,12 @@
+#!/bin/bash
+#: title        : commandreport
+#: date         : 2024 august 03
+#: author       : jack l.
+#: version      : 1.0
+#: description  : outputs available commands to text file
+#: options      : n/a
+# -------------------------------------------
+context_msg="generating report of available commands @ /tmp/cmdreport.txt"
+echo $context_msg
+echo -e "commands available: $(compgen -c | wc -l)\n" >  /tmp/cmdreport.txt
+echo -e "[command]   $(compgen -c)\n" >> /tmp/cmdreport.txt

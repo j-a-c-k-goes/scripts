@@ -1,0 +1,9 @@
+#!/bin/bash
+#: title        : commandreport
+#: date         : 2024 august 03
+#: author       : jack l.
+#: version      : 1.0
+#: description  : update and upgrade brew, run weekly as cron job
+#: options      : n/a
+#-------------------------------------------------------
+brew update && brew upgrade

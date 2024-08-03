@@ -1,0 +1,14 @@
+#!/bin/bash
+#: title        : daemonreport
+#: date         : 2024 august 01
+#: author       : jack l.
+#: version      : 1.0
+#: description  : build a report on the number of daemons on the machine
+#: options      : n/a
+# -------------------------------------------
+apple_daemons=$(ls /System/Library/LaunchDaemons  | grep "com.apple.*" | wc -l)
+total_daemons=$(ls /System/Library/LaunchDaemons  | grep ".*plist"     | wc -l)
+echo "
+[apple daemons] $apple_daemons
+[total daemons] $total_daemons" > $HOME/daemonreport.txt
+cat $HOME/daemonreport.txt
